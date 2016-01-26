@@ -47,6 +47,8 @@ class ViewController: UIViewController {
     @IBAction func displayNextNoteImage(sender:UIButton) {
 
         displayNextNoteImage()
+        
+        //git test change
 //
 //       nextRandomNoteInt = pickRandomNote()
 //        
