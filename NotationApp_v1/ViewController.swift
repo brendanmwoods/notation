@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     var currentNote = 0
     var correctCount = 0
     var incorrectCount = 0
+    var skipCount = 0
     
     enum Notes {
     case C,D,E,F,G,A,B
@@ -46,35 +47,16 @@ class ViewController: UIViewController {
     
     @IBAction func displayNextNoteImage(sender:UIButton) {
 
-        displayNextNoteImage()
-        
-        //git test change
-//
-//       nextRandomNoteInt = pickRandomNote()
-//        
-//        switch nextRandomNoteInt {
-//        case 1:
-//            noteImage?.image = UIImage(named: "C.png")
-//        case 2:
-//            noteImage?.image = UIImage(named: "D.png")
-//        case 3:
-//            noteImage?.image = UIImage(named: "E.png")
-//        case 4:
-//            noteImage?.image = UIImage(named: "F.png")
-//        case 5:
-//            noteImage?.image = UIImage(named: "G.png")
-//        case 6:
-//            noteImage?.image = UIImage(named: "A.png")
-//        case 7:
-//            noteImage?.image = UIImage(named: "B.png")
-//        default :
-//            print("got to default case")
-//        }
-//        currentNote = nextRandomNoteInt
+        //displayNextNoteImage()
+        noteImage?.image = UIImage(named: "grandStaff-blank-400x500.png")
+        skipCount++
+        if skipCount % 2 == 0 {
+            displayNextNoteImage()
+        }
     }
     
     func displayNextNoteImage() {
-
+        
     nextRandomNoteInt = pickRandomNote()
         while(nextRandomNoteInt == currentNote) {
             print("DUPLICATE AVOIDED")
@@ -106,8 +88,6 @@ class ViewController: UIViewController {
     
     @IBAction func noteButtonPushed(sender:UIButton) {
         checkIfNote(sender.titleLabel!.text!)
-        print(sender.titleLabel!.text!)
-        
     }
     
     func checkIfNote(note:String) {
