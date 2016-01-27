@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var noteImage:UIImageView?
-    @IBOutlet weak var resultText:UILabel?
+    @IBOutlet weak var resultImage:UIImageView?
+    //@IBOutlet weak var resultText:UILabel?
     @IBOutlet weak var correctResulDisplay:UILabel?
     @IBOutlet weak var totalResultDisplay:UILabel?
     @IBOutlet weak var resultsPercentage:UILabel?
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
     @IBAction func displayNextNoteImage(sender:UIButton) {
 
         //displayNextNoteImage()
-        noteImage?.image = UIImage(named: "grandStaff-blank-400x500.png")
+        noteImage?.image = UIImage(named: "grandStaff-hardRange-blank-2000x1600.png")
         skipCount++
         if skipCount % 2 == 0 {
             displayNextNoteImage()
@@ -148,27 +149,35 @@ class ViewController: UIViewController {
     
     func displayCorrect() {
         correctCount++
-        resultText!.text = "Correct"
-        resultText!.textColor = UIColor.blueColor()
-        print("Correct")
+  //      resultText!.text = "Correct"
+  //      resultText!.textColor = UIColor.blueColor()
         correctResulDisplay?.text = String(correctCount)
         totalResultDisplay?.text = String(correctCount + incorrectCount)
         updateResultPercentage()
+        displayCorrectResultImage()
         displayNextNoteImage()
     }
     
     func displayIncorrect() {
         incorrectCount++
-        resultText!.text = "Incorrect"
-        resultText!.textColor = UIColor.redColor()
-        print("Incorrect")
+//        resultText!.text = "Incorrect"
+//        resultText!.textColor = UIColor.redColor()
         totalResultDisplay?.text = String(correctCount + incorrectCount)
         updateResultPercentage()
+        displayIncorrectResultImage()
     }
     
     func updateResultPercentage() {
         let resultPercentage:Double = Double(correctCount) / (Double(incorrectCount + correctCount)) * 100
         resultsPercentage!.text = String(Int(resultPercentage)) + "%"
+    }
+    
+    func displayCorrectResultImage() {
+        resultImage?.image = UIImage(named: "check.png")
+    }
+    
+    func displayIncorrectResultImage() {
+        resultImage?.image = UIImage(named: "x.png")
     }
 }
 
