@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var noteImage:UIImageView?
     @IBOutlet weak var resultImage:UIImageView?
-    //@IBOutlet weak var resultText:UILabel?
     @IBOutlet weak var correctResulDisplay:UILabel?
     @IBOutlet weak var totalResultDisplay:UILabel?
     @IBOutlet weak var resultsPercentage:UILabel?
@@ -22,19 +21,20 @@ class ViewController: UIViewController {
     var correctCount = 0
     var incorrectCount = 0
     var skipCount = 0
-    
-    enum Notes {
-    case C,D,E,F,G,A,B
-    }
+    var difficulty = ""
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         displayNextNoteImage()
-        // Do any additional setup after loading the view, typically from a nib.
-      let notes = NoteLibrary()
+        
+        //create a note library, populate it with all 88 notes,
+        //   and then filter based on difficulty
+        let notes = NoteLibrary()
         notes.fillNoteLibrary()
-            }
-
+        notes.filterNotesForDifficulty(difficulty)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,20 +48,14 @@ class ViewController: UIViewController {
     
     
     @IBAction func displayNextNoteImage(sender:UIButton) {
-
-        //displayNextNoteImage()
-        noteImage?.image = UIImage(named: "grandStaff-hardRange-blank-2000x1600.png")
         skipCount++
-        if skipCount % 2 == 0 {
-            displayNextNoteImage()
-        }
+        displayNextNoteImage()
     }
     
     func displayNextNoteImage() {
         
     nextRandomNoteInt = pickRandomNote()
         while(nextRandomNoteInt == currentNote) {
-            print("DUPLICATE AVOIDED")
             nextRandomNoteInt = pickRandomNote()
         }
         
@@ -150,8 +144,6 @@ class ViewController: UIViewController {
     
     func displayCorrect() {
         correctCount++
-  //      resultText!.text = "Correct"
-  //      resultText!.textColor = UIColor.blueColor()
         correctResulDisplay?.text = String(correctCount)
         totalResultDisplay?.text = String(correctCount + incorrectCount)
         updateResultPercentage()
@@ -161,8 +153,6 @@ class ViewController: UIViewController {
     
     func displayIncorrect() {
         incorrectCount++
-//        resultText!.text = "Incorrect"
-//        resultText!.textColor = UIColor.redColor()
         totalResultDisplay?.text = String(correctCount + incorrectCount)
         updateResultPercentage()
         displayIncorrectResultImage()
@@ -180,6 +170,8 @@ class ViewController: UIViewController {
     func displayIncorrectResultImage() {
         resultImage?.image = UIImage(named: "x.png")
     }
+    
+ 
 }
 
 

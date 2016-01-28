@@ -236,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="368" y="306"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="exg-8M-Now">
             <objects>
-                <viewController id="dbG-Pp-nW6" sceneMemberID="viewController">
+                <viewController id="dbG-Pp-nW6" customClass="MenuViewController" customModule="NotationApp_v1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vU7-7d-NwH"/>
                         <viewControllerLayoutGuide type="bottom" id="OCQ-FA-kkz"/>
@@ -253,7 +253,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Easy"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="8Yy-zI-jV0"/>
+                                    <action selector="easyButtonPressed:" destination="dbG-Pp-nW6" eventType="touchUpInside" id="vgr-C2-f9W"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="easyButtonSegue" id="8Yy-zI-jV0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t01-47-Qhm">
+                                <rect key="frame" x="133" y="208" width="55" height="30"/>
+                                <state key="normal" title="Medium"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="mediumButtonSegue" id="Hbz-kU-Kqt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -263,7 +271,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrH-ij-75U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-21" y="306"/>
+            <point key="canvasLocation" x="-18" y="306"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Hbz-kU-Kqt"/>
+    </inferredMetricsTieBreakers>
 </document>
