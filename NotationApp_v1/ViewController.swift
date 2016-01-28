@@ -31,8 +31,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         displayNextNoteImage()
         // Do any additional setup after loading the view, typically from a nib.
-        
-    }
+      let notes = NoteLibrary()
+        notes.fillNoteLibrary()
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

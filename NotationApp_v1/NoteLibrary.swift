@@ -8,14 +8,16 @@
 
 import Foundation
 
+class NoteLibrary:NSObject {
 
 var totalNotes = 88
-var allNotesArr = [(noteName: String,octaveNumber: Int,absoluteNote: Int)]()
+var allNotesArr = [(noteName: String,octaveNumber: Int,
+    absoluteNote: Int, isFlatOrSharp:Bool)]()
 
 func fillNoteLibrary() {
     //create all 88 notes and assign note number
     for (var i = 1; i <= totalNotes ; i++) {
-        var tempNote = (noteName:"",octaveNumber:0,absoluteNote:0)
+        var tempNote = (noteName:"",octaveNumber:0,absoluteNote:0,false)
         tempNote.absoluteNote = i
         allNotesArr.append(tempNote)
     }
@@ -39,17 +41,22 @@ func fillNoteLibrary() {
     //assign note names
     for index in 0..<totalNotes {
         switch allNotesArr[index].absoluteNote % 12 {
-        case 0 : allNotesArr[index].noteName = "Aa"
+        case 0 : allNotesArr[index].noteName = "Ab"
+            allNotesArr[index].isFlatOrSharp = true
         case 1 : allNotesArr[index].noteName = "A"
         case 2 : allNotesArr[index].noteName = "Bb"
+            allNotesArr[index].isFlatOrSharp = true
         case 3 : allNotesArr[index].noteName = "B"
         case 4 : allNotesArr[index].noteName = "C"
         case 5 : allNotesArr[index].noteName = "Db"
+            allNotesArr[index].isFlatOrSharp = true
         case 6 : allNotesArr[index].noteName = "D"
         case 7 : allNotesArr[index].noteName = "Eb"
+            allNotesArr[index].isFlatOrSharp = true
         case 8 : allNotesArr[index].noteName = "E"
         case 9 : allNotesArr[index].noteName = "F"
         case 10 : allNotesArr[index].noteName = "Gb"
+            allNotesArr[index].isFlatOrSharp = true
         case 11 : allNotesArr[index].noteName = "G"
         default : print("default case shouldn't be reached")
         }
@@ -58,4 +65,6 @@ func fillNoteLibrary() {
     for note in allNotesArr {
         print(note)
     }
+}
+
 }

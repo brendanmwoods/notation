@@ -16,13 +16,13 @@
 		BC3B60781C4F1F0100EE02B6 /* NotationApp_v1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3B60771C4F1F0100EE02B6 /* NotationApp_v1UITests.swift */; };
 		BC85C8571C505BD0003470BC /* A.png in Resources */ = {isa = PBXBuildFile; fileRef = BC85C8501C505BD0003470BC /* A.png */; };
 		BC85C8581C505BD0003470BC /* B.png in Resources */ = {isa = PBXBuildFile; fileRef = BC85C8511C505BD0003470BC /* B.png */; };
-		BC85C8591C505BD0003470BC /* C.png in Resources */ = {isa = PBXBuildFile; fileRef = BC85C8521C505BD0003470BC /* C.png */; };
 		BC85C85A1C505BD0003470BC /* D.png in Resources */ = {isa = PBXBuildFile; fileRef = BC85C8531C505BD0003470BC /* D.png */; };
 		BC85C85B1C505BD0003470BC /* E.png in Resources */ = {isa = PBXBuildFile; fileRef = BC85C8541C505BD0003470BC /* E.png */; };
 		BC85C85C1C505BD0003470BC /* F.png in Resources */ = {isa = PBXBuildFile; fileRef = BC85C8551C505BD0003470BC /* F.png */; };
 		BC85C85D1C505BD0003470BC /* G.png in Resources */ = {isa = PBXBuildFile; fileRef = BC85C8561C505BD0003470BC /* G.png */; };
 		BC85C89B1C556759003470BC /* NoteLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC85C89A1C556759003470BC /* NoteLibrary.swift */; };
 		BCAFDC921C5728CA00203610 /* grandStaff-blank-400x500.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAFDC911C5728CA00203610 /* grandStaff-blank-400x500.png */; };
+		BCC98CCB1C59B6CD0070ED4A /* C.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC98CCA1C59B6CD0070ED4A /* C.png */; };
 		BCF584EB1C58B4E900B4CFEA /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF584EA1C58B4E900B4CFEA /* check.png */; };
 		BCF584ED1C58BA8500B4CFEA /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF584EC1C58BA8500B4CFEA /* x.png */; };
 /* End PBXBuildFile section */
@@ -60,13 +60,13 @@
 		BC3B60791C4F1F0100EE02B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC85C8501C505BD0003470BC /* A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = A.png; path = Images/notationImages/A.png; sourceTree = "<group>"; };
 		BC85C8511C505BD0003470BC /* B.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = B.png; path = Images/notationImages/B.png; sourceTree = "<group>"; };
-		BC85C8521C505BD0003470BC /* C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = C.png; path = Images/notationImages/C.png; sourceTree = "<group>"; };
 		BC85C8531C505BD0003470BC /* D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = D.png; path = Images/notationImages/D.png; sourceTree = "<group>"; };
 		BC85C8541C505BD0003470BC /* E.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = E.png; path = Images/notationImages/E.png; sourceTree = "<group>"; };
 		BC85C8551C505BD0003470BC /* F.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = F.png; path = Images/notationImages/F.png; sourceTree = "<group>"; };
 		BC85C8561C505BD0003470BC /* G.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = G.png; path = Images/notationImages/G.png; sourceTree = "<group>"; };
 		BC85C89A1C556759003470BC /* NoteLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteLibrary.swift; sourceTree = "<group>"; };
 		BCAFDC911C5728CA00203610 /* grandStaff-blank-400x500.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grandStaff-blank-400x500.png"; path = "Images/notationImages/grandStaff-blank-400x500.png"; sourceTree = "<group>"; };
+		BCC98CCA1C59B6CD0070ED4A /* C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = C.png; sourceTree = "<group>"; };
 		BCF584EA1C58B4E900B4CFEA /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = Images/notationImages/check.png; sourceTree = "<group>"; };
 		BCF584EC1C58BA8500B4CFEA /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = x.png; path = Images/notationImages/x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +156,7 @@
 				BCF584EC1C58BA8500B4CFEA /* x.png */,
 				BC85C8501C505BD0003470BC /* A.png */,
 				BC85C8511C505BD0003470BC /* B.png */,
-				BC85C8521C505BD0003470BC /* C.png */,
+				BCC98CCA1C59B6CD0070ED4A /* C.png */,
 				BC85C8531C505BD0003470BC /* D.png */,
 				BC85C8541C505BD0003470BC /* E.png */,
 				BC85C8551C505BD0003470BC /* F.png */,
@@ -279,8 +279,8 @@
 				BC85C8581C505BD0003470BC /* B.png in Resources */,
 				BC3B60621C4F1F0100EE02B6 /* LaunchScreen.storyboard in Resources */,
 				BC85C8571C505BD0003470BC /* A.png in Resources */,
+				BCC98CCB1C59B6CD0070ED4A /* C.png in Resources */,
 				BC85C85D1C505BD0003470BC /* G.png in Resources */,
-				BC85C8591C505BD0003470BC /* C.png in Resources */,
 				BCAFDC921C5728CA00203610 /* grandStaff-blank-400x500.png in Resources */,
 				BC85C85B1C505BD0003470BC /* E.png in Resources */,
 				BCF584ED1C58BA8500B4CFEA /* x.png in Resources */,
@@ -456,6 +456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brendanwoods.NotationApp-v1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -467,6 +468,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brendanwoods.NotationApp-v1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
