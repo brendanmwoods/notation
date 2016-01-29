@@ -233,12 +233,19 @@
                                     <constraint firstAttribute="width" secondItem="skl-F2-tUu" secondAttribute="height" multiplier="1:1" id="uwd-pX-sUW"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:10 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrn-Kr-NpL">
+                                <rect key="frame" x="239" y="527" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wT1-pA-OAa" firstAttribute="top" secondItem="gDC-FN-j6X" secondAttribute="bottom" constant="5" id="2Qu-9d-57e"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="daY-Oi-8d9" secondAttribute="bottom" constant="8" id="3My-Mg-DXk"/>
                             <constraint firstItem="wT1-pA-OAa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3k5-e8-g4q"/>
+                            <constraint firstItem="zrn-Kr-NpL" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="7wM-wi-vVx"/>
                             <constraint firstItem="BWG-0l-lvc" firstAttribute="top" secondItem="wT1-pA-OAa" secondAttribute="bottom" constant="21" id="Bf1-mP-74c"/>
                             <constraint firstItem="skl-F2-tUu" firstAttribute="width" secondItem="wT1-pA-OAa" secondAttribute="height" multiplier="50:303" id="CTW-D9-5VP"/>
                             <constraint firstItem="1SM-FS-rcG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Fve-xI-RsD"/>
@@ -258,6 +265,7 @@
                             <constraint firstItem="wT1-pA-OAa" firstAttribute="top" secondItem="skl-F2-tUu" secondAttribute="bottom" constant="-39" id="tni-jF-j5c"/>
                             <constraint firstItem="wT1-pA-OAa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="uvt-MN-Yu2"/>
                             <constraint firstItem="1SM-FS-rcG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="v1Z-BB-quw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zrn-Kr-NpL" secondAttribute="bottom" constant="20" id="wbF-5o-sp9"/>
                             <constraint firstItem="skl-F2-tUu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xVl-Gu-1Ep"/>
                             <constraint firstItem="ZVM-6V-l3N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="zGy-uP-daj"/>
                         </constraints>
@@ -277,6 +285,7 @@
                         <outlet property="noteImage" destination="wT1-pA-OAa" id="xdP-OS-pRQ"/>
                         <outlet property="resultImage" destination="skl-F2-tUu" id="U8I-MD-0F2"/>
                         <outlet property="resultsPercentage" destination="daY-Oi-8d9" id="7EB-nu-78D"/>
+                        <outlet property="timerLabel" destination="zrn-Kr-NpL" id="ylH-0c-UsQ"/>
                         <outlet property="totalResultDisplay" destination="T6f-Ue-eLi" id="Jfp-pF-sCs"/>
                     </connections>
                 </viewController>
@@ -296,8 +305,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYV-cM-8Jm">
-                                <rect key="frame" x="107" y="111" width="106" height="69"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="aYV-cM-8Jm">
+                                <rect key="frame" x="92" y="124" width="136" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Easy"/>
                                 <connections>
@@ -306,7 +315,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t01-47-Qhm">
-                                <rect key="frame" x="133" y="208" width="55" height="30"/>
+                                <rect key="frame" x="92" y="260" width="136" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Medium"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="mediumButtonSegue" id="Hbz-kU-Kqt"/>

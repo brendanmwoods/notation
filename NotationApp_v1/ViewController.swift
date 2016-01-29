@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var correctResulDisplay:UILabel?
     @IBOutlet weak var totalResultDisplay:UILabel?
     @IBOutlet weak var resultsPercentage:UILabel?
+    @IBOutlet weak var timerLabel:UILabel?
     
     var nextRandomNoteInt = 0
     var currentNote = 0
@@ -24,23 +25,33 @@ class ViewController: UIViewController {
     var difficulty = ""
     var filteredNotesArr = [(noteName: String,octaveNumber: Int,
         absoluteNote: Int, isFlatOrSharp:Bool)]()
+    let gameDurationInSeconds = 10
+    var secondsRemaining = 0
+    var timer = NSTimer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //create a note library, populate it with all 88 notes,and then
+    //   filter based on difficulty. display first note, and start timer
+    func setup() {
         
-        //create a note library, populate it with all 88 notes,
-        //   and then filter based on difficulty
         let notes = NoteLibrary()
         notes.fillNoteLibrary()
         notes.filterNotesForDifficulty(difficulty)
         filteredNotesArr = notes.returnFilteredNotes()
+        secondsRemaining = gameDurationInSeconds
+        timerLabel!.text = "Time:\(gameDurationInSeconds)"
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         displayNextNoteImage()
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -59,41 +70,23 @@ class ViewController: UIViewController {
     
     func displayNextNoteImage() {
         
-    nextRandomNoteInt = pickRandomNote()
+        nextRandomNoteInt = pickRandomNote()
         while(nextRandomNoteInt == currentNote) {
             nextRandomNoteInt = pickRandomNote()
         }
-       
+        
         print(filteredNotesArr[nextRandomNoteInt - 1])
         let tempNote = filteredNotesArr[nextRandomNoteInt - 1]
         noteImage?.image = UIImage(named: "\(tempNote.noteName)\(tempNote.octaveNumber)-\(tempNote.absoluteNote)")
-            
-//    switch nextRandomNoteInt {
-//    case 1:
-//    noteImage?.image = UIImage(named: "C.png")
-//    case 2:
-//    noteImage?.image = UIImage(named: "D.png")
-//    case 3:
-//    noteImage?.image = UIImage(named: "E.png")
-//    case 4:
-//    noteImage?.image = UIImage(named: "F.png")
-//    case 5:
-//    noteImage?.image = UIImage(named: "G.png")
-//    case 6:
-//    noteImage?.image = UIImage(named: "A.png")
-//    case 7:
-//    noteImage?.image = UIImage(named: "B.png")
-//    default :
-//        print("got to default case")
-//    }
-    currentNote = nextRandomNoteInt
+        
+        currentNote = nextRandomNoteInt
     }
-
     
     
     @IBAction func noteButtonPushed(sender:UIButton) {
         checkIfNote(sender.titleLabel!.text!.lowercaseString)
     }
+    
     
     func checkIfNote(note:String) {
         var guessedCorrect = false
@@ -103,58 +96,11 @@ class ViewController: UIViewController {
             displayCorrect()
         }
         
-//        if currentNote == 1 {
-//            if note == "C" {
-//                guessedCorrect = true
-//                displayCorrect()
-//            }
-//        }
-//        
-//        if currentNote == 2 {
-//            if note == "D" {
-//                guessedCorrect = true
-//                displayCorrect()
-//            }
-//        }
-//
-//        if currentNote == 3 {
-//            if note == "E" {
-//                guessedCorrect = true
-//                displayCorrect()
-//            }
-//        }
-//
-//        if currentNote == 4 {
-//            if note == "F" {
-//                guessedCorrect = true
-//                displayCorrect()
-//            }
-//        }
-//
-//        if currentNote == 5 {
-//            if note == "G" {
-//                guessedCorrect = true
-//                displayCorrect()
-//            }
-//        }
-//
-//        if currentNote == 6 {
-//            if note == "A" {
-//                guessedCorrect = true
-//                displayCorrect()
-//            }
-//        }
-//
-//        if currentNote == 7 {
-//            if note == "B" {
-//                guessedCorrect = true
-//                displayCorrect()
-//            }
-//        }
         if !guessedCorrect {
             displayIncorrect()
         }
     }
+    
     
     func displayCorrect() {
         correctCount++
@@ -165,6 +111,7 @@ class ViewController: UIViewController {
         displayNextNoteImage()
     }
     
+    
     func displayIncorrect() {
         incorrectCount++
         totalResultDisplay?.text = String(correctCount + incorrectCount)
@@ -172,20 +119,31 @@ class ViewController: UIViewController {
         displayIncorrectResultImage()
     }
     
+    
     func updateResultPercentage() {
         let resultPercentage:Double = Double(correctCount) / (Double(incorrectCount + correctCount)) * 100
         resultsPercentage!.text = String(Int(resultPercentage)) + "%"
     }
     
+    
     func displayCorrectResultImage() {
         resultImage?.image = UIImage(named: "check.png")
     }
+    
     
     func displayIncorrectResultImage() {
         resultImage?.image = UIImage(named: "x.png")
     }
     
     
+    func subtractTime() {
+        secondsRemaining--
+        timerLabel!.text = "Time:\(secondsRemaining)"
+        if(secondsRemaining == 0){
+            timer.invalidate()
+            timerLabel?.text = "Game Over"
+        }
+    }
 }
 
 
