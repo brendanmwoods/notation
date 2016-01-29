@@ -22,19 +22,22 @@ class ViewController: UIViewController {
     var incorrectCount = 0
     var skipCount = 0
     var difficulty = ""
-        
+    var filteredNotesArr = [(noteName: String,octaveNumber: Int,
+        absoluteNote: Int, isFlatOrSharp:Bool)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayNextNoteImage()
         
         //create a note library, populate it with all 88 notes,
         //   and then filter based on difficulty
         let notes = NoteLibrary()
         notes.fillNoteLibrary()
         notes.filterNotesForDifficulty(difficulty)
+        filteredNotesArr = notes.returnFilteredNotes()
+        displayNextNoteImage()
     }
     
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,7 +45,8 @@ class ViewController: UIViewController {
     
     
     func pickRandomNote() -> Int {
-        let noteInt = Int(arc4random_uniform(7) + 1)
+        let maxRandom = filteredNotesArr.count
+        let noteInt = Int(arc4random_uniform(UInt32(maxRandom)) + 1)
         return noteInt
     }
     
@@ -52,91 +56,101 @@ class ViewController: UIViewController {
         displayNextNoteImage()
     }
     
+    
     func displayNextNoteImage() {
         
     nextRandomNoteInt = pickRandomNote()
         while(nextRandomNoteInt == currentNote) {
             nextRandomNoteInt = pickRandomNote()
         }
-        
-    switch nextRandomNoteInt {
-    case 1:
-    noteImage?.image = UIImage(named: "C.png")
-    case 2:
-    noteImage?.image = UIImage(named: "D.png")
-    case 3:
-    noteImage?.image = UIImage(named: "E.png")
-    case 4:
-    noteImage?.image = UIImage(named: "F.png")
-    case 5:
-    noteImage?.image = UIImage(named: "G.png")
-    case 6:
-    noteImage?.image = UIImage(named: "A.png")
-    case 7:
-    noteImage?.image = UIImage(named: "B.png")
-    default :
-        print("got to default case")
-    }
+       
+        print(filteredNotesArr[nextRandomNoteInt - 1])
+        let tempNote = filteredNotesArr[nextRandomNoteInt - 1]
+        noteImage?.image = UIImage(named: "\(tempNote.noteName)\(tempNote.octaveNumber)-\(tempNote.absoluteNote)")
+            
+//    switch nextRandomNoteInt {
+//    case 1:
+//    noteImage?.image = UIImage(named: "C.png")
+//    case 2:
+//    noteImage?.image = UIImage(named: "D.png")
+//    case 3:
+//    noteImage?.image = UIImage(named: "E.png")
+//    case 4:
+//    noteImage?.image = UIImage(named: "F.png")
+//    case 5:
+//    noteImage?.image = UIImage(named: "G.png")
+//    case 6:
+//    noteImage?.image = UIImage(named: "A.png")
+//    case 7:
+//    noteImage?.image = UIImage(named: "B.png")
+//    default :
+//        print("got to default case")
+//    }
     currentNote = nextRandomNoteInt
     }
 
     
     
     @IBAction func noteButtonPushed(sender:UIButton) {
-        checkIfNote(sender.titleLabel!.text!)
+        checkIfNote(sender.titleLabel!.text!.lowercaseString)
     }
     
     func checkIfNote(note:String) {
         var guessedCorrect = false
-        
-        if currentNote == 1 {
-            if note == "C" {
-                guessedCorrect = true
-                displayCorrect()
-            }
+        let tempNote = filteredNotesArr[currentNote - 1]
+        if tempNote.noteName == note {
+            guessedCorrect = true
+            displayCorrect()
         }
         
-        if currentNote == 2 {
-            if note == "D" {
-                guessedCorrect = true
-                displayCorrect()
-            }
-        }
-
-        if currentNote == 3 {
-            if note == "E" {
-                guessedCorrect = true
-                displayCorrect()
-            }
-        }
-
-        if currentNote == 4 {
-            if note == "F" {
-                guessedCorrect = true
-                displayCorrect()
-            }
-        }
-
-        if currentNote == 5 {
-            if note == "G" {
-                guessedCorrect = true
-                displayCorrect()
-            }
-        }
-
-        if currentNote == 6 {
-            if note == "A" {
-                guessedCorrect = true
-                displayCorrect()
-            }
-        }
-
-        if currentNote == 7 {
-            if note == "B" {
-                guessedCorrect = true
-                displayCorrect()
-            }
-        }
+//        if currentNote == 1 {
+//            if note == "C" {
+//                guessedCorrect = true
+//                displayCorrect()
+//            }
+//        }
+//        
+//        if currentNote == 2 {
+//            if note == "D" {
+//                guessedCorrect = true
+//                displayCorrect()
+//            }
+//        }
+//
+//        if currentNote == 3 {
+//            if note == "E" {
+//                guessedCorrect = true
+//                displayCorrect()
+//            }
+//        }
+//
+//        if currentNote == 4 {
+//            if note == "F" {
+//                guessedCorrect = true
+//                displayCorrect()
+//            }
+//        }
+//
+//        if currentNote == 5 {
+//            if note == "G" {
+//                guessedCorrect = true
+//                displayCorrect()
+//            }
+//        }
+//
+//        if currentNote == 6 {
+//            if note == "A" {
+//                guessedCorrect = true
+//                displayCorrect()
+//            }
+//        }
+//
+//        if currentNote == 7 {
+//            if note == "B" {
+//                guessedCorrect = true
+//                displayCorrect()
+//            }
+//        }
         if !guessedCorrect {
             displayIncorrect()
         }
@@ -171,7 +185,7 @@ class ViewController: UIViewController {
         resultImage?.image = UIImage(named: "x.png")
     }
     
- 
+    
 }
 
 

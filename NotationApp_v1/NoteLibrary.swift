@@ -45,23 +45,23 @@ class NoteLibrary:NSObject {
         //assign note names
         for index in 0..<totalNotes {
             switch allNotesArr[index].absoluteNote % 12 {
-            case 0 : allNotesArr[index].noteName = "Ab"
+            case 0 : allNotesArr[index].noteName = "ab"
             allNotesArr[index].isFlatOrSharp = true
-            case 1 : allNotesArr[index].noteName = "A"
-            case 2 : allNotesArr[index].noteName = "Bb"
+            case 1 : allNotesArr[index].noteName = "a"
+            case 2 : allNotesArr[index].noteName = "bb"
             allNotesArr[index].isFlatOrSharp = true
-            case 3 : allNotesArr[index].noteName = "B"
-            case 4 : allNotesArr[index].noteName = "C"
-            case 5 : allNotesArr[index].noteName = "Db"
+            case 3 : allNotesArr[index].noteName = "b"
+            case 4 : allNotesArr[index].noteName = "c"
+            case 5 : allNotesArr[index].noteName = "db"
             allNotesArr[index].isFlatOrSharp = true
-            case 6 : allNotesArr[index].noteName = "D"
-            case 7 : allNotesArr[index].noteName = "Eb"
+            case 6 : allNotesArr[index].noteName = "d"
+            case 7 : allNotesArr[index].noteName = "eb"
             allNotesArr[index].isFlatOrSharp = true
-            case 8 : allNotesArr[index].noteName = "E"
-            case 9 : allNotesArr[index].noteName = "F"
-            case 10 : allNotesArr[index].noteName = "Gb"
+            case 8 : allNotesArr[index].noteName = "e"
+            case 9 : allNotesArr[index].noteName = "f"
+            case 10 : allNotesArr[index].noteName = "gb"
             allNotesArr[index].isFlatOrSharp = true
-            case 11 : allNotesArr[index].noteName = "G"
+            case 11 : allNotesArr[index].noteName = "g"
             default : print("default case shouldn't be reached")
             }
         }
@@ -91,6 +91,12 @@ class NoteLibrary:NSObject {
                 allNotesArr.removeAtIndex(i)
             }
         }
+    }
+    
+    
+    func returnFilteredNotes() -> [(noteName: String,octaveNumber: Int,
+        absoluteNote: Int, isFlatOrSharp:Bool)] {
+        return allNotesArr
     }
     
     func printAllNotes() {
