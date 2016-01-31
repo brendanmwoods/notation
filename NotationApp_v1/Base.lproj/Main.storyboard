@@ -281,7 +281,14 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="aButton" destination="Jf4-hv-NxS" id="ent-yv-dHL"/>
+                        <outlet property="bButton" destination="Zvg-jz-Jph" id="qcE-X3-5XU"/>
+                        <outlet property="cButton" destination="vjm-2N-wWx" id="beQ-gM-XWN"/>
                         <outlet property="correctResulDisplay" destination="pc3-Av-Inf" id="bey-2t-gpA"/>
+                        <outlet property="dButton" destination="QUD-1w-Ouy" id="n6n-1t-c6T"/>
+                        <outlet property="eButton" destination="VbU-d5-93X" id="fFF-EV-3mv"/>
+                        <outlet property="fButton" destination="waE-Uf-tf3" id="0vZ-kP-F6X"/>
+                        <outlet property="gButton" destination="X0o-NK-30u" id="G6r-SL-5rn"/>
                         <outlet property="noteImage" destination="wT1-pA-OAa" id="xdP-OS-pRQ"/>
                         <outlet property="resultImage" destination="skl-F2-tUu" id="U8I-MD-0F2"/>
                         <outlet property="resultsPercentage" destination="daY-Oi-8d9" id="7EB-nu-78D"/>

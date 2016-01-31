@@ -16,6 +16,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalResultDisplay:UILabel?
     @IBOutlet weak var resultsPercentage:UILabel?
     @IBOutlet weak var timerLabel:UILabel?
+    @IBOutlet weak var aButton:UIButton?
+    @IBOutlet weak var bButton:UIButton?
+    @IBOutlet weak var cButton:UIButton?
+    @IBOutlet weak var dButton:UIButton?
+    @IBOutlet weak var eButton:UIButton?
+    @IBOutlet weak var fButton:UIButton?
+    @IBOutlet weak var gButton:UIButton?
+    
+    let gameDurationInSeconds = 10
     
     var nextRandomNoteInt = 0
     var currentNote = 0
@@ -25,12 +34,12 @@ class ViewController: UIViewController {
     var difficulty = ""
     var filteredNotesArr = [(noteName: String,octaveNumber: Int,
         absoluteNote: Int, isFlatOrSharp:Bool)]()
-    let gameDurationInSeconds = 10
     var secondsRemaining = 0
     var timer = NSTimer()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+            super.viewDidLoad()
+        formatButtonShapes()
         setup()
     }
     
@@ -47,13 +56,26 @@ class ViewController: UIViewController {
         let notes = NoteLibrary()
         notes.fillNoteLibrary()
         notes.filterNotesForDifficulty(difficulty)
-        filteredNotesArr = notes.returnFilteredNotes()
+        filteredNotesArr = notes.returnNotesArray()
         secondsRemaining = gameDurationInSeconds
+        correctCount = 0
+        incorrectCount = 0
+        updateResultsText()
         timerLabel!.text = "Time:\(gameDurationInSeconds)"
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         displayNextNoteImage()
     }
     
+    func formatButtonShapes() {
+        let buttonRadius:CGFloat = 5
+        aButton?.layer.cornerRadius = buttonRadius
+        bButton?.layer.cornerRadius = buttonRadius
+        cButton?.layer.cornerRadius = buttonRadius
+        dButton?.layer.cornerRadius = buttonRadius
+        eButton?.layer.cornerRadius = buttonRadius
+        fButton?.layer.cornerRadius = buttonRadius
+        gButton?.layer.cornerRadius = buttonRadius
+    }
     
     func pickRandomNote() -> Int {
         let maxRandom = filteredNotesArr.count
@@ -104,25 +126,32 @@ class ViewController: UIViewController {
     
     func displayCorrect() {
         correctCount++
-        correctResulDisplay?.text = String(correctCount)
-        totalResultDisplay?.text = String(correctCount + incorrectCount)
-        updateResultPercentage()
+        updateResultsText()
         displayCorrectResultImage()
         displayNextNoteImage()
     }
-    
+
     
     func displayIncorrect() {
         incorrectCount++
-        totalResultDisplay?.text = String(correctCount + incorrectCount)
-        updateResultPercentage()
+        updateResultsText()
         displayIncorrectResultImage()
     }
     
     
+    func updateResultsText(){
+        correctResulDisplay?.text = String(correctCount)
+        totalResultDisplay?.text = String(correctCount + incorrectCount)
+        updateResultPercentage()
+    }
+    
     func updateResultPercentage() {
+        if(correctCount + incorrectCount == 0){
+            resultsPercentage!.text = "0%"
+        }else {
         let resultPercentage:Double = Double(correctCount) / (Double(incorrectCount + correctCount)) * 100
         resultsPercentage!.text = String(Int(resultPercentage)) + "%"
+        }
     }
     
     
@@ -142,6 +171,10 @@ class ViewController: UIViewController {
         if(secondsRemaining == 0){
             timer.invalidate()
             timerLabel?.text = "Game Over"
+            let alert = UIAlertController(title: "Game Over", message: "You got \(correctCount) correct", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Play Again", style: UIAlertActionStyle.Default, handler: { action in self.setup() } ))
+            presentViewController(alert, animated: true, completion: nil)
         }
     }
 }

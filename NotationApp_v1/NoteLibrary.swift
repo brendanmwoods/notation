@@ -10,12 +10,16 @@ import Foundation
 
 class NoteLibrary:NSObject {
     
-    var totalNotes = 88
-    var allNotesArr = [(noteName: String,octaveNumber: Int,
-        absoluteNote: Int, isFlatOrSharp:Bool)]()
+    //Difficulty constants
     let mediumBottomNote = 23
     let mediumTopNote = 57
     var includeFlatsAndSharps = false
+    
+    var totalNotes = 88
+    var allNotesArr = [(noteName: String,octaveNumber: Int,
+        absoluteNote: Int, isFlatOrSharp:Bool)]()
+    
+    
     func fillNoteLibrary() {
         
         
@@ -82,7 +86,6 @@ class NoteLibrary:NSObject {
         if !includeFlatsAndSharps {
             removeFlatsAndSharps()
         }
-        printAllNotes()
     }
     
     func removeFlatsAndSharps() {
@@ -94,7 +97,7 @@ class NoteLibrary:NSObject {
     }
     
     
-    func returnFilteredNotes() -> [(noteName: String,octaveNumber: Int,
+    func returnNotesArray() -> [(noteName: String,octaveNumber: Int,
         absoluteNote: Int, isFlatOrSharp:Bool)] {
         return allNotesArr
     }
