@@ -97,7 +97,6 @@ class ViewController: UIViewController {
             nextRandomNoteInt = pickRandomNote()
         }
         
-        print(filteredNotesArr[nextRandomNoteInt - 1])
         let tempNote = filteredNotesArr[nextRandomNoteInt - 1]
         noteImage?.image = UIImage(named: "\(tempNote.noteName)\(tempNote.octaveNumber)-\(tempNote.absoluteNote)")
         

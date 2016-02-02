@@ -11,6 +11,10 @@ import Foundation
 class NoteLibrary:NSObject {
     
     //Difficulty constants
+    let easyTrebleBottomNote = 40
+    let easyTrebleTopNote = 57
+    let easyBassBottomNote = 23
+    let easyBassTopNote = 40
     let mediumBottomNote = 23
     let mediumTopNote = 57
     var includeFlatsAndSharps = false
@@ -71,22 +75,38 @@ class NoteLibrary:NSObject {
         }
     }
     
+    
     func filterNotesForDifficulty(difficulty:String) {
-        if difficulty == "easy" {
-
-        }else if difficulty == "medium" {
-            // remove all notes below bottom note, and above top note in medium,
-            for var i = allNotesArr.count-1; i >= 0; i-- {
-                if allNotesArr[i].absoluteNote < mediumBottomNote ||
-                    allNotesArr[i].absoluteNote > mediumTopNote  {
-                        allNotesArr.removeAtIndex(i)
-                }
+        var tempBottomNote = 0
+        var tempTopNote = 0
+        
+        switch difficulty {
+        case "easyTreble":
+            tempBottomNote = easyTrebleBottomNote
+            tempTopNote = easyTrebleTopNote
+        case "easyBass":
+            tempBottomNote = easyBassBottomNote
+            tempTopNote = easyBassTopNote
+        case "medium":
+            tempBottomNote = mediumBottomNote
+            tempTopNote = mediumTopNote
+        default:
+            print("default case for filtering based on difficulty")
+        }
+        
+        // remove all notes outside difficulty range
+        for var i = allNotesArr.count-1; i >= 0; i-- {
+            if allNotesArr[i].absoluteNote < tempBottomNote ||
+                allNotesArr[i].absoluteNote > tempTopNote  {
+                    allNotesArr.removeAtIndex(i)
             }
         }
+        
         if !includeFlatsAndSharps {
             removeFlatsAndSharps()
         }
     }
+    
     
     func removeFlatsAndSharps() {
         for var i = allNotesArr.count-1; i >= 0; i-- {
@@ -99,7 +119,7 @@ class NoteLibrary:NSObject {
     
     func returnNotesArray() -> [(noteName: String,octaveNumber: Int,
         absoluteNote: Int, isFlatOrSharp:Bool)] {
-        return allNotesArr
+            return allNotesArr
     }
     
     func printAllNotes() {

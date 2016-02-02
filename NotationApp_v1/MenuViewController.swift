@@ -17,13 +17,19 @@ class MenuViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "easyButtonSegue") {
-            let difficulty = "easy"
+        if(segue.identifier == "easyTrebleSegue") {
+            let difficulty = "easyTreble"
             let destinationVc = segue.destinationViewController as! ViewController
             destinationVc.difficulty = difficulty
         }
         
-        if(segue.identifier == "mediumButtonSegue") {
+        if(segue.identifier == "easyBassSegue") {
+            let difficulty = "easyBass"
+            let destinationVc = segue.destinationViewController as! ViewController
+            destinationVc.difficulty = difficulty
+        }
+
+        if(segue.identifier == "mediumSegue") {
             let difficulty = "medium"
             let destinationVc = segue.destinationViewController as! ViewController
             destinationVc.difficulty = difficulty
