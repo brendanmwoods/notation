@@ -215,9 +215,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pc3-Av-Inf">
-                                <rect key="frame" x="81" y="520" width="11" height="21"/>
+                                <rect key="frame" x="81" y="520" width="34" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="11" id="QZB-NC-9XH"/>
+                                    <constraint firstAttribute="width" constant="34" id="QZB-NC-9XH"/>
                                     <constraint firstAttribute="height" constant="21" id="jRi-0t-mzs"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -233,10 +233,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6f-Ue-eLi" userLabel="Total Result Display">
-                                <rect key="frame" x="81" y="539" width="11" height="21"/>
+                                <rect key="frame" x="81" y="539" width="34" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="L8P-NX-N5J"/>
-                                    <constraint firstAttribute="width" constant="11" id="qXS-LP-omo"/>
+                                    <constraint firstAttribute="width" constant="34" id="qXS-LP-omo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>

@@ -181,7 +181,7 @@ class ViewController: UIViewController {
         if(secondsRemaining == 0){
             timer.invalidate()
             timerLabel?.text = "Game Over"
-            let alert = UIAlertController(title: "Game Over", message: "You got \(correctCount) correct", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Game Over", message: "You scored: \(score)", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "Play Again", style: UIAlertActionStyle.Default, handler: { action in self.setup() } ))
             presentViewController(alert, animated: true, completion: nil)
