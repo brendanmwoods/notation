@@ -63,6 +63,7 @@ class ViewController: UIViewController {
         correctCount = 0
         incorrectCount = 0
         score = 0
+        resultImage?.image = UIImage(named: "")
         updateResultsText()
         timerLabel!.text = "Time:\(gameDurationInSeconds)"
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,selector: Selector("subtractTime"), userInfo: nil, repeats: true)
