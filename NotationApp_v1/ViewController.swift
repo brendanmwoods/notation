@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalResultDisplay:UILabel?
     @IBOutlet weak var resultsPercentage:UILabel?
     @IBOutlet weak var timerLabel:UILabel?
+    @IBOutlet weak var scoreDisplay:UILabel?
     @IBOutlet weak var aButton:UIButton?
     @IBOutlet weak var bButton:UIButton?
     @IBOutlet weak var cButton:UIButton?
@@ -24,13 +25,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var fButton:UIButton?
     @IBOutlet weak var gButton:UIButton?
     
-    let gameDurationInSeconds = 10
+    let gameDurationInSeconds = 20
     
     var nextRandomNoteInt = 0
     var currentNote = 0
     var correctCount = 0
     var incorrectCount = 0
     var skipCount = 0
+    var score = 0
     var difficulty = ""
     var filteredNotesArr = [(noteName: String,octaveNumber: Int,
         absoluteNote: Int, isFlatOrSharp:Bool)]()
@@ -60,6 +62,7 @@ class ViewController: UIViewController {
         secondsRemaining = gameDurationInSeconds
         correctCount = 0
         incorrectCount = 0
+        score = 0
         updateResultsText()
         timerLabel!.text = "Time:\(gameDurationInSeconds)"
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,selector: Selector("subtractTime"), userInfo: nil, repeats: true)
@@ -142,6 +145,7 @@ class ViewController: UIViewController {
         correctResulDisplay?.text = String(correctCount)
         totalResultDisplay?.text = String(correctCount + incorrectCount)
         updateResultPercentage()
+        updateScore()
     }
     
     func updateResultPercentage() {
@@ -151,6 +155,11 @@ class ViewController: UIViewController {
         let resultPercentage:Double = Double(correctCount) / (Double(incorrectCount + correctCount)) * 100
         resultsPercentage!.text = String(Int(resultPercentage)) + "%"
         }
+    }
+    
+    func updateScore() {
+        score = (correctCount * 100) - (incorrectCount * 50)
+        scoreDisplay!.text = "Score: \(score)"
     }
     
     
