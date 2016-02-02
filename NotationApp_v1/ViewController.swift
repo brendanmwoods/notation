@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     var timer = NSTimer()
     
     override func viewDidLoad() {
-            super.viewDidLoad()
+        super.viewDidLoad()
         formatButtonShapes()
         setup()
     }
@@ -80,6 +80,7 @@ class ViewController: UIViewController {
         fButton?.layer.cornerRadius = buttonRadius
         gButton?.layer.cornerRadius = buttonRadius
     }
+    
     
     func pickRandomNote() -> Int {
         let maxRandom = filteredNotesArr.count
@@ -133,7 +134,7 @@ class ViewController: UIViewController {
         displayCorrectResultImage()
         displayNextNoteImage()
     }
-
+    
     
     func displayIncorrect() {
         incorrectCount++
@@ -153,8 +154,8 @@ class ViewController: UIViewController {
         if(correctCount + incorrectCount == 0){
             resultsPercentage!.text = "0%"
         }else {
-        let resultPercentage:Double = Double(correctCount) / (Double(incorrectCount + correctCount)) * 100
-        resultsPercentage!.text = String(Int(resultPercentage)) + "%"
+            let resultPercentage:Double = Double(correctCount) / (Double(incorrectCount + correctCount)) * 100
+            resultsPercentage!.text = String(Int(resultPercentage)) + "%"
         }
     }
     
