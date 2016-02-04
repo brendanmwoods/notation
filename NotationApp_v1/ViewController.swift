@@ -168,8 +168,11 @@ class ViewController: UIViewController {
     func displayCorrectResultImage() {
         resultImage?.image = UIImage(named: "check.png")
         resultImage?.alpha = 1
+        self.resultImage?.transform = CGAffineTransformIdentity
         UIView.animateWithDuration(1, animations: {
             self.resultImage?.alpha = 0
+            let grow = CGAffineTransformMakeScale(2, 2)
+            self.resultImage?.transform = grow
             })
     }
     
@@ -177,8 +180,11 @@ class ViewController: UIViewController {
     func displayIncorrectResultImage() {
         resultImage?.image = UIImage(named: "x.png")
         resultImage?.alpha = 1
+        self.resultImage?.transform = CGAffineTransformIdentity
         UIView.animateWithDuration(1, animations: {
             self.resultImage?.alpha = 0
+            let grow = CGAffineTransformMakeScale(2, 2)
+            self.resultImage?.transform = grow
         })
         
     }
