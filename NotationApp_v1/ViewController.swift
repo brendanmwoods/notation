@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var fButton:UIButton?
     @IBOutlet weak var gButton:UIButton?
     
-    let gameDurationInSeconds = 20
+    let gameDurationInSeconds = 15
     
     var nextRandomNoteInt = 0
     var currentNote = 0
@@ -167,11 +167,20 @@ class ViewController: UIViewController {
     
     func displayCorrectResultImage() {
         resultImage?.image = UIImage(named: "check.png")
+        resultImage?.alpha = 1
+        UIView.animateWithDuration(1, animations: {
+            self.resultImage?.alpha = 0
+            })
     }
     
     
     func displayIncorrectResultImage() {
         resultImage?.image = UIImage(named: "x.png")
+        resultImage?.alpha = 1
+        UIView.animateWithDuration(1, animations: {
+            self.resultImage?.alpha = 0
+        })
+        
     }
     
     
